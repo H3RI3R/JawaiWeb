@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/JawaiWeb/',
   plugins: [react()],
   build: {
     // Split heavy motion/scroll libraries into their own chunk so the
