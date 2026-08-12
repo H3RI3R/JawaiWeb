@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis owns smooth scrolling; avoid double-smoothing */
+  background: #0a0b0d;
+}
+
+body {
+  @apply bg-void text-sand font-body antialiased;
+  overflow-x: hidden;
+}
+
+/* Hide native cursor only on fine-pointer (desktop) devices once our
+   custom cursor mounts. Touch devices keep the system cursor untouched. */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: none;
+  }
+}
+
+::selection {
+  background: #d4a24c;
+  color: #0a0b0d;
+}
+
+/* Leopard-rosette motif: a small repeating cluster used as a section
+   divider / bullet in place of generic numbered markers. Built from
+   radial-gradients so it costs no image request. */
+.rosette-motif {
+  width: 34px;
+  height: 34px;
+  background-image:
+    radial-gradient(circle at 30% 30%, #d4a24c 0 3px, transparent 4px),
+    radial-gradient(circle at 65% 20%, #d4a24c 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 75% 55%, #d4a24c 0 3px, transparent 4px),
+    radial-gradient(circle at 40% 65%, #d4a24c 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 20% 60%, #d4a24c 0 2px, transparent 3px);
+  opacity: 0.85;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(244, 241, 234, 0.4);
+  color: transparent;
+}
+
+/* Reduced motion: strip decorative motion site-wide. Components also
+   branch in JS (see hooks/useReducedMotion.js) for scroll-linked effects
+   that can't be solved with CSS alone. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
