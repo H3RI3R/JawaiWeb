@@ -51,8 +51,9 @@ export default function Footer() {
         </nav>
       </div>
 
-      <div className="relative mx-auto mt-12 max-w-6xl border-t border-sand/10 pt-6 text-xs text-sand/30">
-        © {new Date().getFullYear()} Jawai Wild. All sightings are wild and never guaranteed.
+      <div className="relative mx-auto mt-12 max-w-6xl border-t border-sand/10 pt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-sand/40">
+        <p>© {new Date().getFullYear()} Jawai Wild by <span className="font-semibold text-gold">H3RI3R</span>. All rights reserved.</p>
+        <p className="font-mono text-[11px]">Licensed under GNU GPLv3 · All sightings are wild and protected.</p>
       </div>
     </footer>
   );
